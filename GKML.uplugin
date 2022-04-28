@@ -1,0 +1,24 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "GKML",
+	"Description": "Machine Learning Plugin",
+	"Category": "Other",
+	"CreatedBy": "Pierre Delaunay",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "https://gitlab.com/Delaunay/gamekit",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "GKML",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}

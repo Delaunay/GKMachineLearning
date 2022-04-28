@@ -1,0 +1,82 @@
+    MACHINEFILE="nodes.$SLURM_JOB_ID"
+    srun -l /bin/hostname | sort -n | awk '{print $2}' > $MACHINEFILE
+
+
+
+UE_LOG(LogUE4ML, Warning, TEXT("The float value is:"));
+
+
+| Verbosity Level | Printed in Console? | Printed in Editor's Log? |                      Notes                       |
+|-----------------|---------------------|--------------------------|--------------------------------------------------|
+| Fatal           | Yes                 | N/A                      | Crashes the session, even if logging is disabled |
+| Error           | Yes                 | Yes                      | Log text is coloured red                         |
+| Warning         | Yes                 | Yes                      | Log text is coloured yellow                      |
+| Display         | Yes                 | Yes                      | Log text is coloured grey                        |
+| Log             | No                  | Yes                      | Log text is coloured grey                        |
+| Verbose         | No                  | No                       |                                                  |
+| VeryVerbose     | No                  | No                       |                                                  |
+
+
+RPC Call
+* Python act()
+    * RPC call (act, AgentID, Action)
+
+    * Server::act(F4ML::FAgentID AgentID, std::vector<float> ValueStream)
+        * 4MLManager_Client.cpp void U4MLManager::ConfigureAsClient(FRPCServer& Server)
+
+    * GetSession().GetAgent(AgentID);
+        * Agent->DigestActions(data);
+            * For each Actuator
+                * Actuator->DigestInputData(ValueStream);
+                    * Saves the action inside InputData
+                    we save it for when Act gets called in the game thread
+
+
+ValueStream stream needs to be in the same order as the actuator
+
+Game Side
+* void U4MLSession::Tick(float DeltaTime)
+    * For each agent
+        * Sense
+            * For each Sensor
+                * sensor->sense(DeltaTime)
+        * Act
+            * For each actuator:
+                * actuator->act(DeltaTime)
+                    * For each Input in InputData register the key to the PlayerController
+
+
+Player Controller is null
+
+[2021.12.08-18.44.17:353][638]LogUE4ML: VeryVerbose: [RPC] U4MLManager::Act 0
+[2021.12.08-18.44.17:353][638]LogUE4ML: VeryVerbose: [RPC] U4MLAgent::DigestActions (aid: 0)
+[2021.12.08-18.44.17:353][638]LogUE4ML: VeryVerbose: [RPC] U4MLActuator_InputKey::DigestInputData
+
+[2021.12.08-18.44.17:353][638]LogUE4ML: VeryVerbose: [GAME] U4MLSession::Tick (#Agents: 1)
+[2021.12.08-18.44.17:353][638]LogUE4ML: VeryVerbose: [GAME] U4MLAgent::Act  (aid: 0)
+[2021.12.08-18.44.17:353][638]LogUE4ML: VeryVerbose: [GAME] U4MLActuator_InputKey::Act (Size: 1248) (PC: 0)
+
+
+* void U4MLActuator_InputKey::Act(const float DeltaTime)
+    * APlayerController* PC = Cast<APlayerController>(GetControllerAvatar());
+    * AController* U4MLAgentElement::GetControllerAvatar() const
+    * U4MLAgentElement::GetAvatar()
+    * GetAgent().GetAvatar();
+
+
+
+After Reset InputData are not cleaned
+
+	virtual void U4MLActuator_InputKey::Shutdown() override {
+		InputData.SetNum(0, false);
+	}
+
+PlayerController is not set reliably
+
+
+
+[2021.12.08-23.36.33:336][414]LogUE4ML: Verbose: U4MLManager::OnGameModeInitialized
+[2021.12.08-23.36.33:337][414]LogUE4ML: Verbose: U4MLManager::OnGameModePostLogin
+                                               : U4MLSession::FindAvatars
+[2021.12.08-23.36.33:337][414]LogUE4ML: Verbose: Clear Avatar 0
+[2021.12.08-23.36.33:337][414]LogUE4ML: Verbose: Bind Avatar 0
