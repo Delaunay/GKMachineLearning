@@ -49,7 +49,7 @@
 <li class="toctree-l2"><a class="reference internal" href="index.html#why-unrealengine">Why UnrealEngine</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html#cartpole">Cartpole</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="install.html">Installation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ue4ml.html">UE4ML</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mladapter.html">MLAdapter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="game.html">Make the cartpole game</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Cartpole as a gym environment</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#python">Python</a></li>
@@ -109,33 +109,26 @@ RDNA1-2 are not yet supported.</p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p><code class="docutils literal notranslate"><span class="pre">ue4ml</span></code> requires <code class="docutils literal notranslate"><span class="pre">msgpack-rpc-python</span></code> which is badly out of date.
+<p><code class="docutils literal notranslate"><span class="pre">unreal.mladapter</span></code> requires <code class="docutils literal notranslate"><span class="pre">msgpack-rpc-python</span></code> which is badly out of date.
 The required tornado version is particularly old <code class="docutils literal notranslate"><span class="pre">tornado</span> <span class="pre">&gt;=</span> <span class="pre">3,&lt;5</span></code>
-This might break your environment. You should build a virtualenv just for UE4.</p>
-<p>You can use <a class="reference external" href="https://github.com/EpicGames/UnrealEngine/pull/8748">UE4ML_Tweaks</a>
-to avoid <code class="docutils literal notranslate"><span class="pre">msgpack-rpc-python</span></code></p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>To try UE4ML on linux you will need to build UE4 from source using
-my <a class="reference external" href="https://github.com/Delaunay/UnrealEngine/tree/Enable_U4ML_Linux">custom branch</a> (&amp; build rpclib yourself)</p>
+This might break your environment. You should build a virtualenv just for UE.</p>
 </div>
 <ul class="simple">
 <li><p>Install python using <a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">conda</a></p></li>
 <li><p>Install <a class="reference external" href="https://pytorch.org/get-started/locally/">pytorch</a></p></li>
-<li><p>Install ue4ml (python)</p></li>
+<li><p>Install <cite>unreal.mladapter</cite> (python)</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install -e . UnrealEngine/Engine/Plugins/AI/UE4ML/Source/python/
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install -e . UnrealEngine/Engine/Plugins/AI/MLAdapter/Source/python/
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Enable UE4ML (C++/UE4 plugin)</p></li>
+<li><p>Enable MLAdapter (C++/UE4 plugin)</p></li>
 </ul>
 </section>
 <section id="create-a-new-environment">
 <h2>Create a new environment<a class="headerlink" href="#create-a-new-environment" title="Permalink to this headline"></a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">UE4ML</span></code> already implements the basic blocks for us.
-To create a new environment we simply need to inherit from <code class="docutils literal notranslate"><span class="pre">ue4ml.UnrealEnv</span></code>.
+<p><code class="docutils literal notranslate"><span class="pre">MLAdapter</span></code> already implements the basic blocks for us.
+To create a new environment we simply need to inherit from <code class="docutils literal notranslate"><span class="pre">unreal.mladapter.UnrealEnv</span></code>.
 We need to specify with map (i.e level) to load for our training.
 Additionally we will need to set our agent configuration which mainly consist of the observation and action space.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CartPole</span><span class="p">(</span><span class="n">UnrealEnv</span><span class="p">):</span>
@@ -153,7 +146,7 @@ Additionally we will need to set our agent configuration which mainly consist of
 </div>
 <section id="define-the-action-space">
 <h3>Define the action space<a class="headerlink" href="#define-the-action-space" title="Permalink to this headline"></a></h3>
-<p>The action space is defined by adding <a class="reference external" href="https://docs.unrealengine.com/4.27/en-US/API/Plugins/UE4ML/Actuators/">U4MLActuator</a>
+<p>The action space is defined by adding <a class="reference external" href="https://docs.unrealengine.com/5.0/en-US/API/Plugins/MLAdapter/Actuators/">U4MLActuator</a>
 to the agent configuration.</p>
 <ul>
 <li><p>Available actuators:</p>
@@ -187,7 +180,7 @@ since only 1 Axis input that varies between -1 and 1.</p>
 </section>
 <section id="define-the-observation-space">
 <h3>Define the observation space<a class="headerlink" href="#define-the-observation-space" title="Permalink to this headline"></a></h3>
-<p>The observation space is defined by adding <a class="reference external" href="https://docs.unrealengine.com/4.27/en-US/API/Plugins/UE4ML/Sensors/">U4MLSensor</a>
+<p>The observation space is defined by adding <a class="reference external" href="https://docs.unrealengine.com/5.0/en-US/API/Plugins/MLAdapter/Sensors/">U4MLSensor</a>
 to the agent configuration.</p>
 <ul>
 <li><p>Available sensors:</p>
@@ -198,7 +191,7 @@ to the agent configuration.</p>
 <div><ul class="simple">
 <li><p>see <a class="reference external" href="https://docs.unrealengine.com/4.27/en-US/InteractiveExperiences/ArtificialIntelligence/AIPerception/">AI Perception</a>
 which include Hearing, Sight, Team (proximity of ally), Touch. Currently only Sight is supported, it is created by the
-UE4ML system and added to the player controller.</p></li>
+MLAdapter system and added to the player controller.</p></li>
 </ul>
 </div></blockquote>
 </li>
@@ -289,8 +282,8 @@ The <code class="docutils literal notranslate"><span class="pre">AActor</span></
 <p>To test our environment we can write a simple script that will
 launch the environment an execute some random actions.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cartpole.env</span> <span class="kn">import</span> <span class="n">Cartpole</span>
-<span class="kn">from</span> <span class="nn">ue4ml.utils</span> <span class="kn">import</span> <span class="n">random_action</span><span class="p">,</span> <span class="n">ArgumentParser</span>
-<span class="kn">from</span> <span class="nn">ue4ml.runner</span> <span class="kn">import</span> <span class="n">UE4Params</span>
+<span class="kn">from</span> <span class="nn">unreal.mladapter.utils</span> <span class="kn">import</span> <span class="n">random_action</span><span class="p">,</span> <span class="n">ArgumentParser</span>
+<span class="kn">from</span> <span class="nn">unreal.mladapter.runner</span> <span class="kn">import</span> <span class="n">UE4Params</span>
 
 <span class="n">parser</span> <span class="o">=</span> <span class="n">ArgumentParser</span><span class="p">()</span>
 <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--project&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">project</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Path to the uproject&quot;</span><span class="p">)</span>
@@ -351,7 +344,7 @@ commandline shortcut that was added when you installed annaconda.</p>
 <p class="admonition-title">Note</p>
 <p>If the python script launch the game but actions are not executed, try executing the environment
 from the editor first.
-UE4ML has a known issue where it can fail to connect to the RPC server when launching UE4.</p>
+MLAdapter has a known issue where it can fail to connect to the RPC server when launching UE4.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -380,7 +373,7 @@ UE4ML has a known issue where it can fail to connect to the RPC server when laun
 <dd><p><a class="reference external" href="https://docs.unrealengine.com/4.27/en-US/InteractiveExperiences/ArtificialIntelligence/AIPerception/">AI Perception</a></p>
 </dd>
 <dt class="label" id="id12"><span class="brackets">7</span></dt>
-<dd><p><a class="reference external" href="https://docs.unrealengine.com/4.27/en-US/API/Plugins/UE4ML/Sensors/">U4MLSensor</a></p>
+<dd><p><a class="reference external" href="https://docs.unrealengine.com/5.0/en-US/API/Plugins/MLAdapter/Sensors/">U4MLSensor</a></p>
 </dd>
 <dt class="label" id="id14"><span class="brackets">8</span></dt>
 <dd><p><a class="reference external" href="https://docs.unrealengine.com/4.27/en-US/API/Plugins/GameplayAbilities/UAttributeSet/">UAttributeSet</a></p>

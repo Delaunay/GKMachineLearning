@@ -1,7 +1,7 @@
-UE4ML
-~~~~~
+MLAdapter
+~~~~~~~~~
 
-UE4ML was made to be as unintrusive as possible, this means that
+MLAdapter was made to be as unintrusive as possible, this means that
 you will need to modify very little of your game (if anything) to turn it into
 a reinforcement learning environment.
 
@@ -18,7 +18,7 @@ blueprint, as such very little C++ knownledge is necessary to build a custom env
 In a nutshell
 ^^^^^^^^^^^^^
 
-UE4ML is essentially a RPC server that is started along side your game
+MLAdapter is essentially a RPC server that is started along side your game
 and is able to receive actions/inputs from a remote client and reply with
 information about the game.
 
@@ -28,10 +28,10 @@ This can be used to train neural networks to play games.
    :width: 100%
 
 
-UE4ML Architecture
-^^^^^^^^^^^^^^^^^^
+MLAdapter Architecture
+^^^^^^^^^^^^^^^^^^^^^^
 
-A more detailed overview of UE4ML
+A more detailed overview of MLAdapter
 
 .. image:: /_static/UE4ML_System.png
    :width: 100%

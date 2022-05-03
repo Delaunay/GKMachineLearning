@@ -76,22 +76,14 @@
              
   <section id="gkml">
 <h1>GKML<a class="headerlink" href="#gkml" title="Permalink to this headline"></a></h1>
-<a class="reference external image-reference" href="https://cartpole.readthedocs.io/en/latest/?badge=latest"><img alt="Documentation Status" src="https://readthedocs.org/projects/cartpole/badge/?version=latest" /></a>
+<a class="reference external image-reference" href="https://delaunay.github.io/GKMachineLearning/"><img alt="Documentation Status" src="https://readthedocs.org/projects/cartpole/badge/?version=latest" /></a>
 <p>UE5 plugin providing tools for machine learning</p>
 <img alt="_images/Cartpole_big.png" src="_images/Cartpole_big.png" />
 <section id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline"></a></h2>
 <ul class="simple">
-<li><p>UE4 - 4.27/master/5.1</p></li>
+<li><p>UE4 - 5.0+</p></li>
 </ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>For linux you will need to compile <a class="reference external" href="https://github.com/EpicGames/UnrealEngine/pull/8745">Enable_U4ML_Linux branch</a> from source.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>For a more reliable experience you can use <a class="reference external" href="https://github.com/Delaunay/UnrealEngine/tree/UE4ML_Tweaks">UE4ML_Tweaks branch</a></p>
-</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>For UE5 on linux you will need to disable 2 plugins (XGEController and FastBuildController as of Jan 2022)</p>
@@ -105,8 +97,8 @@ Once it is install you can run any packaged environment without installing or co
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install MLAdapter python package</span>
 python -e UnrealEngine/Engine/Plugins/AI/MLAdapter/Source/python
 
-<span class="c1"># Download the cartpole environment</span>
-wget https://github.com/Delaunay/cartpole/releases/download/0.0.0-package-test/cartpole-0.0.0-py3-none-any.whl
+<span class="c1"># Download the GKML environment</span>
+wget
 pip install cartpole-0.0.0-py3-none-any.whl
 
 <span class="c1"># run the packaged environment for training</span>
@@ -121,15 +113,14 @@ cartpole-train --launch
 <p>This repo started using UE5 after commit <code class="docutils literal notranslate"><span class="pre">332ae357235995d1184effdb060</span></code></p>
 </div>
 <p>Install the python package to run this example as a gym environment</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/Delaunay/cartpole
-<span class="nb">cd</span> cartpole
-pip install -e .
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git submodule add https://github.com/Delaunay/GKMachineLearning Plugins/GKML
+pip install -e Plugins/GKML
 
 <span class="c1"># Install MLAdapter python package</span>
 python -e UnrealEngine/Engine/Plugins/AI/MLAdapter/Source/python
 
 <span class="c1"># this will compile the project</span>
-UE4Editor Cartpole.uproject
+UnrealEditor MyProject.uproject
 
 <span class="c1"># Click play in the editor to start the game</span>
 

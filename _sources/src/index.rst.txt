@@ -1,7 +1,7 @@
 Getting started
 ===============
 
-This project demonstrates how to use UE4ML to create a reinforcement learning
+This project demonstrates how to use MLAdapter to create a reinforcement learning
 environment for machine learning.
 
    Machine learning (ML) is the study of computer algorithms that can improve automatically through experience and by the use of data.
@@ -37,7 +37,7 @@ Cartpole
    :maxdepth: 2
 
    install
-   ue4ml
+   mladapter
    game
    launching
    training
@@ -49,7 +49,7 @@ References
 
 .. [#] |Cartpole Env|
 .. [#] |ML|
-.. [#] `UE4ML Documentation <https://docs.unrealengine.com/4.27/en-US/API/Plugins/UE4ML/>`_
+.. [#] `MLAdapter Documentation <https://docs.unrealengine.com/5.0/en-US/API/Plugins/MLAdapter/>`_
 .. [#] `OpenAI Gym <https://gym.openai.com/>`_
 .. [#] `PyTorch Documentation <https://pytorch.org/>`_
 

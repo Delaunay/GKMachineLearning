@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>UE4ML &mdash; Cartpole 0 documentation</title>
+  <title>MLAdapter &mdash; Cartpole 0 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
@@ -49,9 +49,9 @@
 <li class="toctree-l2"><a class="reference internal" href="index.html#why-unrealengine">Why UnrealEngine</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html#cartpole">Cartpole</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="install.html">Installation</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">UE4ML</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">MLAdapter</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#in-a-nutshell">In a nutshell</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#ue4ml-architecture">UE4ML Architecture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mladapter-architecture">MLAdapter Architecture</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="game.html">Make the cartpole game</a></li>
@@ -83,9 +83,9 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="index.html">Getting started</a> &raquo;</li>
-      <li>UE4ML</li>
+      <li>MLAdapter</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/src/ue4ml.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/src/mladapter.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -93,9 +93,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="ue4ml">
-<h1>UE4ML<a class="headerlink" href="#ue4ml" title="Permalink to this headline"></a></h1>
-<p>UE4ML was made to be as unintrusive as possible, this means that
+  <section id="mladapter">
+<h1>MLAdapter<a class="headerlink" href="#mladapter" title="Permalink to this headline"></a></h1>
+<p>MLAdapter was made to be as unintrusive as possible, this means that
 you will need to modify very little of your game (if anything) to turn it into
 a reinforcement learning environment.</p>
 <p>The main requirements that would need to be addressed are:</p>
@@ -109,15 +109,15 @@ While the cartpole environment is using a bit of C++ most of it was written to e
 blueprint, as such very little C++ knownledge is necessary to build a custom environment.</p>
 <section id="in-a-nutshell">
 <h2>In a nutshell<a class="headerlink" href="#in-a-nutshell" title="Permalink to this headline"></a></h2>
-<p>UE4ML is essentially a RPC server that is started along side your game
+<p>MLAdapter is essentially a RPC server that is started along side your game
 and is able to receive actions/inputs from a remote client and reply with
 information about the game.</p>
 <p>This can be used to train neural networks to play games.</p>
 <a class="reference internal image-reference" href="../_images/cartpole_setup.png"><img alt="../_images/cartpole_setup.png" src="../_images/cartpole_setup.png" style="width: 100%;" /></a>
 </section>
-<section id="ue4ml-architecture">
-<h2>UE4ML Architecture<a class="headerlink" href="#ue4ml-architecture" title="Permalink to this headline"></a></h2>
-<p>A more detailed overview of UE4ML</p>
+<section id="mladapter-architecture">
+<h2>MLAdapter Architecture<a class="headerlink" href="#mladapter-architecture" title="Permalink to this headline"></a></h2>
+<p>A more detailed overview of MLAdapter</p>
 <a class="reference internal image-reference" href="../_images/UE4ML_System.png"><img alt="../_images/UE4ML_System.png" src="../_images/UE4ML_System.png" style="width: 100%;" /></a>
 </section>
 </section>

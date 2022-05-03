@@ -19,37 +19,27 @@ Python
 
 .. warning::
 
-   ``ue4ml`` requires ``msgpack-rpc-python`` which is badly out of date.
+   ``unreal.mladapter`` requires ``msgpack-rpc-python`` which is badly out of date.
    The required tornado version is particularly old ``tornado >= 3,<5``
-   This might break your environment. You should build a virtualenv just for UE4.
-
-   You can use `UE4ML_Tweaks <https://github.com/EpicGames/UnrealEngine/pull/8748>`_
-   to avoid ``msgpack-rpc-python``
-
-
-.. warning::
-
-   To try UE4ML on linux you will need to build UE4 from source using
-   my `custom branch <https://github.com/Delaunay/UnrealEngine/tree/Enable_U4ML_Linux>`_ (& build rpclib yourself)
-
+   This might break your environment. You should build a virtualenv just for UE.
 
 
 - Install python using `conda <https://docs.conda.io/en/latest/miniconda.html>`_
 - Install `pytorch <https://pytorch.org/get-started/locally/>`_
-- Install ue4ml (python)
+- Install `unreal.mladapter` (python)
 
 .. code-block:: bash
 
-   pip install -e . UnrealEngine/Engine/Plugins/AI/UE4ML/Source/python/
+   pip install -e . UnrealEngine/Engine/Plugins/AI/MLAdapter/Source/python/
 
-- Enable UE4ML (C++/UE4 plugin)
+- Enable MLAdapter (C++/UE4 plugin)
 
 
 Create a new environment
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-``UE4ML`` already implements the basic blocks for us.
-To create a new environment we simply need to inherit from ``ue4ml.UnrealEnv``.
+``MLAdapter`` already implements the basic blocks for us.
+To create a new environment we simply need to inherit from ``unreal.mladapter.UnrealEnv``.
 We need to specify with map (i.e level) to load for our training.
 Additionally we will need to set our agent configuration which mainly consist of the observation and action space.
 
@@ -71,7 +61,7 @@ Additionally we will need to set our agent configuration which mainly consist of
 Define the action space
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-The action space is defined by adding `U4MLActuator <https://docs.unrealengine.com/4.27/en-US/API/Plugins/UE4ML/Actuators/>`_
+The action space is defined by adding `U4MLActuator <https://docs.unrealengine.com/5.0/en-US/API/Plugins/MLAdapter/Actuators/>`_
 to the agent configuration.
 
 * Available actuators:
@@ -106,7 +96,7 @@ since only 1 Axis input that varies between -1 and 1.
 Define the observation space
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The observation space is defined by adding `U4MLSensor <https://docs.unrealengine.com/4.27/en-US/API/Plugins/UE4ML/Sensors/>`_
+The observation space is defined by adding `U4MLSensor <https://docs.unrealengine.com/5.0/en-US/API/Plugins/MLAdapter/Sensors/>`_
 to the agent configuration.
 
 * Available sensors:
@@ -115,7 +105,7 @@ to the agent configuration.
 
       * see `AI Perception <https://docs.unrealengine.com/4.27/en-US/InteractiveExperiences/ArtificialIntelligence/AIPerception/>`_
         which include Hearing, Sight, Team (proximity of ally), Touch. Currently only Sight is supported, it is created by the
-        UE4ML system and added to the player controller.
+        MLAdapter system and added to the player controller.
 
    * Attribute: listen to attribute change if you are using
      `UAttributeSet <https://docs.unrealengine.com/4.27/en-US/API/Plugins/GameplayAbilities/UAttributeSet/>`_ for your character.
@@ -206,8 +196,8 @@ launch the environment an execute some random actions.
 .. code-block:: python
 
    from cartpole.env import Cartpole
-   from ue4ml.utils import random_action, ArgumentParser
-   from ue4ml.runner import UE4Params
+   from unreal.mladapter.utils import random_action, ArgumentParser
+   from unreal.mladapter.runner import UE4Params
 
    parser = ArgumentParser()
    parser.add_argument("--project", type=str, default=project, help="Path to the uproject")
@@ -277,7 +267,7 @@ to your cartpole uproject.
 
    If the python script launch the game but actions are not executed, try executing the environment
    from the editor first.
-   UE4ML has a known issue where it can fail to connect to the RPC server when launching UE4.
+   MLAdapter has a known issue where it can fail to connect to the RPC server when launching UE4.
 
 
 .. note::
@@ -294,6 +284,6 @@ References
 .. [#] `conda <https://docs.conda.io/en/latest/miniconda.html>`_
 .. [#] `pytorch <https://pytorch.org/get-started/locally/>`_
 .. [#] `AI Perception <https://docs.unrealengine.com/4.27/en-US/InteractiveExperiences/ArtificialIntelligence/AIPerception/>`_
-.. [#] `U4MLSensor <https://docs.unrealengine.com/4.27/en-US/API/Plugins/UE4ML/Sensors/>`_
+.. [#] `U4MLSensor <https://docs.unrealengine.com/5.0/en-US/API/Plugins/MLAdapter/Sensors/>`_
 .. [#] `UAttributeSet <https://docs.unrealengine.com/4.27/en-US/API/Plugins/GameplayAbilities/UAttributeSet/>`_
 
