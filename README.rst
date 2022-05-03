@@ -2,7 +2,7 @@ GKML
 ====
 
 .. image:: https://readthedocs.org/projects/cartpole/badge/?version=latest
-   :target: https://cartpole.readthedocs.io/en/latest/?badge=latest
+   :target: https://delaunay.github.io/GKMachineLearning/
    :alt: Documentation Status
 
 UE5 plugin providing tools for machine learning
@@ -13,16 +13,7 @@ UE5 plugin providing tools for machine learning
 Requirements
 ~~~~~~~~~~~~
 
-* UE4 - 4.27/master/5.1
-
-
-.. note::
-
-   For linux you will need to compile `Enable_U4ML_Linux branch <https://github.com/EpicGames/UnrealEngine/pull/8745>`_ from source.
-
-.. note::
-
-   For a more reliable experience you can use `UE4ML_Tweaks branch <https://github.com/Delaunay/UnrealEngine/tree/UE4ML_Tweaks>`_
+* UE4 - 5.0+
 
 .. note::
 
@@ -41,8 +32,8 @@ Once it is install you can run any packaged environment without installing or co
    # Install MLAdapter python package
    python -e UnrealEngine/Engine/Plugins/AI/MLAdapter/Source/python
 
-   # Download the cartpole environment
-   wget https://github.com/Delaunay/cartpole/releases/download/0.0.0-package-test/cartpole-0.0.0-py3-none-any.whl
+   # Download the GKML environment
+   wget
    pip install cartpole-0.0.0-py3-none-any.whl
 
    # run the packaged environment for training
@@ -61,15 +52,14 @@ Install the python package to run this example as a gym environment
 
 .. code-block:: bash
 
-   git clone https://github.com/Delaunay/cartpole
-   cd cartpole
-   pip install -e .
+   git submodule add https://github.com/Delaunay/GKMachineLearning Plugins/GKML
+   pip install -e Plugins/GKML
 
    # Install MLAdapter python package
    python -e UnrealEngine/Engine/Plugins/AI/MLAdapter/Source/python
 
    # this will compile the project
-   UE4Editor Cartpole.uproject
+   UnrealEditor MyProject.uproject
 
    # Click play in the editor to start the game
 

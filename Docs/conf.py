@@ -102,7 +102,7 @@ highlight_language = 'cpp'
 # =================
 
 autodoc_mock_imports = [
-    "ue4ml"
+    "unreal"
 ]
 
 # Add any paths that contain templates here, relative to this directory.

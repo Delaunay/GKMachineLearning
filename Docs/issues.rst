@@ -11,8 +11,8 @@ MLAdapter Bugs
 ~~~~~~~~~~
 
 * PlayerController is not set upon level reset.
-  The training script is sending actions but UE4ML agent does nothing
-  because his PlayerController reference is null. (mitigated on UE4ML_Tweaks)
+  The training script is sending actions but MLAdapter agent does nothing
+  because his PlayerController reference is null.
 
 * U4ML does not launch on standalone builds (fixed on MLAdapter_Tweaks)
 
