@@ -1,11 +1,11 @@
-Cartpole
-========
+GKML
+====
 
 .. image:: https://readthedocs.org/projects/cartpole/badge/?version=latest
    :target: https://cartpole.readthedocs.io/en/latest/?badge=latest
    :alt: Documentation Status
 
-Reimplementation of the cartpole environment in UE4 as a demo of the MLAdapter plugin
+UE5 plugin providing tools for machine learning
 
 .. image:: /_static/Cartpole_big.png
 
