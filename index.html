@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GKML &mdash; Cartpole 0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/collapsible-lists/css/tree_view.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Getting started" href="src/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="#" class="icon icon-home"> Cartpole
+          </a>
+              <div class="version">
+                0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="src/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="issues.html">Known Issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/cartpole.html">C++ Doc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python/index.html">Python Doc</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Cartpole</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+      <li>GKML</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="gkml">
+<h1>GKML<a class="headerlink" href="#gkml" title="Permalink to this headline"></a></h1>
+<a class="reference external image-reference" href="https://cartpole.readthedocs.io/en/latest/?badge=latest"><img alt="Documentation Status" src="https://readthedocs.org/projects/cartpole/badge/?version=latest" /></a>
+<p>UE5 plugin providing tools for machine learning</p>
+<img alt="_images/Cartpole_big.png" src="_images/Cartpole_big.png" />
+<section id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>UE4 - 4.27/master/5.1</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For linux you will need to compile <a class="reference external" href="https://github.com/EpicGames/UnrealEngine/pull/8745">Enable_U4ML_Linux branch</a> from source.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For a more reliable experience you can use <a class="reference external" href="https://github.com/Delaunay/UnrealEngine/tree/UE4ML_Tweaks">UE4ML_Tweaks branch</a></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For UE5 on linux you will need to disable 2 plugins (XGEController and FastBuildController as of Jan 2022)</p>
+</div>
+</section>
+<section id="packaged-install">
+<h2>Packaged Install<a class="headerlink" href="#packaged-install" title="Permalink to this headline"></a></h2>
+<p>Unfortunately U4ML python package is not open source and you will need to
+create an Epic account to install it on your machine.
+Once it is install you can run any packaged environment without installing or compiling UnrealEngine.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install MLAdapter python package</span>
+python -e UnrealEngine/Engine/Plugins/AI/MLAdapter/Source/python
+
+<span class="c1"># Download the cartpole environment</span>
+wget https://github.com/Delaunay/cartpole/releases/download/0.0.0-package-test/cartpole-0.0.0-py3-none-any.whl
+pip install cartpole-0.0.0-py3-none-any.whl
+
+<span class="c1"># run the packaged environment for training</span>
+cartpole-train --launch
+</pre></div>
+</div>
+</section>
+<section id="development-install">
+<h2>Development Install<a class="headerlink" href="#development-install" title="Permalink to this headline"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This repo started using UE5 after commit <code class="docutils literal notranslate"><span class="pre">332ae357235995d1184effdb060</span></code></p>
+</div>
+<p>Install the python package to run this example as a gym environment</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/Delaunay/cartpole
+<span class="nb">cd</span> cartpole
+pip install -e .
+
+<span class="c1"># Install MLAdapter python package</span>
+python -e UnrealEngine/Engine/Plugins/AI/MLAdapter/Source/python
+
+<span class="c1"># this will compile the project</span>
+UE4Editor Cartpole.uproject
+
+<span class="c1"># Click play in the editor to start the game</span>
+
+<span class="c1"># this will connect to the game running inside the editor</span>
+cartpole-train --no-launch
+</pre></div>
+</div>
+<p>To run the example just launch the appropriate script</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python Source/python/cartpole/run.py --project E:/cartpole/Cartpole.uproject --exec E:/UnrealEngine/Engine/Binaries/Win64/UE4Editor.exe
+</pre></div>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="src/index.html">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="src/index.html#why-unrealengine">Why UnrealEngine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/index.html#cartpole">Cartpole</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/index.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="issues.html">Known Issues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="issues.html#cartpole-bugs">Cartpole Bugs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="issues.html#mladapter-bugs">MLAdapter Bugs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="issues.html#ue4-linux-bugs">UE4 Linux Bugs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="issues.html#ue5-linux-bugs">UE5 Linux Bugs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/cartpole.html">C++ Doc</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/cartpole.html#class-hierarchy">Class Hierarchy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/cartpole.html#file-hierarchy">File Hierarchy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/cartpole.html#full-api">Full API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="python/index.html">Python Doc</a></li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="src/index.html" class="btn btn-neutral float-right" title="Getting started" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright BSD 3-Clause License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

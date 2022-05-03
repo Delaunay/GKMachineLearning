@@ -1,0 +1,32 @@
+
+.. _program_listing_file_Source_GKML_GKML.cpp:
+
+Program Listing for File GKML.cpp
+=================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file_Source_GKML_GKML.cpp>` (``Source/GKML/GKML.cpp``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   // BSD 3-Clause License Copyright (c) 2022, Pierre Delaunay All rights reserved.
+   
+   #include "GKML.h"
+   
+   #define LOCTEXT_NAMESPACE "FGKMLModule"
+   
+   void FGKMLModule::StartupModule()
+   {
+       // This code will execute after your module is loaded into memory; the exact timing is specified in the .uplugin file per-module
+   }
+   
+   void FGKMLModule::ShutdownModule()
+   {
+       // This function may be called during shutdown to clean up your module.  For modules that support dynamic reloading,
+       // we call this function before unloading the module.
+   }
+   
+   #undef LOCTEXT_NAMESPACE
+       
+   IMPLEMENT_MODULE(FGKMLModule, GKML)

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Packaging &mdash; Cartpole 0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Known Issues" href="../issues.html" />
+    <link rel="prev" title="Training" href="training.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Cartpole
+          </a>
+              <div class="version">
+                0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Getting started</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#why-unrealengine">Why UnrealEngine</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#cartpole">Cartpole</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ue4ml.html">UE4ML</a></li>
+<li class="toctree-l3"><a class="reference internal" href="game.html">Make the cartpole game</a></li>
+<li class="toctree-l3"><a class="reference internal" href="launching.html">Cartpole as a gym environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="training.html">Training</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Packaging</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../issues.html">Known Issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/cartpole.html">C++ Doc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">Python Doc</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Cartpole</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Getting started</a> &raquo;</li>
+      <li>Packaging</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/src/packaging.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="packaging">
+<h1>Packaging<a class="headerlink" href="#packaging" title="Permalink to this headline"></a></h1>
+<p>Once your RL environment is done you will want to package it
+for other people to use.</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://docs.unrealengine.com/4.27/en-US/SharingAndReleasing/Deployment/Cooking/">Cook the game</a>
+this will generate a compact version of the environment that can easily be redistributed.</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">UE4Editor</span><span class="o">.</span><span class="n">exe</span> <span class="o">&lt;</span><span class="n">GameName</span> <span class="ow">or</span> <span class="n">uproject</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">run</span><span class="o">=</span><span class="n">cook</span> <span class="o">-</span><span class="n">targetplatform</span><span class="o">=&lt;</span><span class="n">Plat1</span><span class="o">&gt;+&lt;</span><span class="n">Plat2</span><span class="o">&gt;</span> <span class="p">[</span><span class="o">-</span><span class="n">cookonthefly</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">iterate</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="nb">map</span><span class="o">=&lt;</span><span class="n">Map1</span><span class="o">&gt;+&lt;</span><span class="n">Map2</span><span class="o">&gt;</span><span class="p">]</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Package the cooked game with your python code by adding
+all the files in the <cite>package_data</cite> section of setuptools</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">setup</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;cartpole&quot;</span><span class="p">,</span>
+    <span class="n">package_data</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;cartpole&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;UE cooked files&quot;</span><span class="p">,</span>
+             <span class="o">...</span>
+    <span class="p">]},</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>To access the packaged data inside a python module you can use <cite>pkg_resources</cite></p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pkg_resources</span>
+
+<span class="n">cartpole_linux</span> <span class="o">=</span> <span class="n">pkg_resources</span><span class="o">.</span><span class="n">resource_filename</span><span class="p">(</span>
+    <span class="vm">__name__</span><span class="p">,</span> <span class="s2">&quot;Cooked/LinuxNoEditor/Cartpole/Binaries/Linux/Cartpole&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline"></a></h2>
+<dl class="footnote brackets">
+<dt class="label" id="id1"><span class="brackets">1</span></dt>
+<dd><p><a class="reference external" href="https://docs.unrealengine.com/4.27/en-US/SharingAndReleasing/Deployment/Cooking/">Cooking</a></p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="training.html" class="btn btn-neutral float-left" title="Training" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../issues.html" class="btn btn-neutral float-right" title="Known Issues" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright BSD 3-Clause License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

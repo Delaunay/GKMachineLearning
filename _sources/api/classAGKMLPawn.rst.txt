@@ -1,0 +1,27 @@
+.. _exhale_class_classAGKMLPawn:
+
+Class AGKMLPawn
+===============
+
+- Defined in :ref:`file_Source_GKML_GKMLPawn.h`
+
+
+Inheritance Relationships
+-------------------------
+
+Base Types
+**********
+
+- ``public APawn``
+- ``public IGenericTeamAgentInterface``
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: AGKMLPawn
+   :project: Cartpole
+   :members:
+   :protected-members:
+   :undoc-members:

@@ -1,0 +1,35 @@
+
+.. _program_listing_file_Source_GKML_GKMLPlayerState.h:
+
+Program Listing for File GKMLPlayerState.h
+==========================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file_Source_GKML_GKMLPlayerState.h>` (``Source/GKML/GKMLPlayerState.h``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   // BSD 3-Clause License Copyright (c) 2022, Pierre Delaunay All rights reserved.
+   
+   #pragma once
+   
+   // Unreal
+   #include "CoreMinimal.h"
+   #include "GameFramework/PlayerState.h"
+   
+   // Generated
+   #include "GKMLPlayerState.generated.h"
+   
+   UCLASS(Blueprintable, BlueprintType)
+   class GKML_API AGKMLPlayerState : public APlayerState
+   {
+       GENERATED_BODY()
+   
+   public:
+   
+       UFUNCTION(BlueprintCallable, Category = Score)
+       void K2_SetScore(const float value) {
+           SetScore(value);
+       }
+   };

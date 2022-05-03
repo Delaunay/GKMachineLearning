@@ -1,0 +1,26 @@
+.. _exhale_class_classAGKMLGameModeBase:
+
+Class AGKMLGameModeBase
+=======================
+
+- Defined in :ref:`file_Source_GKML_GKMLGameModeBase.h`
+
+
+Inheritance Relationships
+-------------------------
+
+Base Type
+*********
+
+- ``public AGameModeBase``
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: AGKMLGameModeBase
+   :project: Cartpole
+   :members:
+   :protected-members:
+   :undoc-members:

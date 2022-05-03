@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Getting started &mdash; Cartpole 0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Installation" href="install.html" />
+    <link rel="prev" title="GKML" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Cartpole
+          </a>
+              <div class="version">
+                0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#why-unrealengine">Why UnrealEngine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cartpole">Cartpole</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ue4ml.html">UE4ML</a></li>
+<li class="toctree-l3"><a class="reference internal" href="game.html">Make the cartpole game</a></li>
+<li class="toctree-l3"><a class="reference internal" href="launching.html">Cartpole as a gym environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="training.html">Training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="packaging.html">Packaging</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../issues.html">Known Issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/cartpole.html">C++ Doc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">Python Doc</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Cartpole</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Getting started</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/src/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="getting-started">
+<h1>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline"></a></h1>
+<p>This project demonstrates how to use UE4ML to create a reinforcement learning
+environment for machine learning.</p>
+<blockquote>
+<div><p>Machine learning (ML) is the study of computer algorithms that can improve automatically through experience and by the use of data.
+It is seen as a part of artificial intelligence. Machine learning algorithms build a model based on sample data,
+known as training data, in order to make predictions or decisions without being explicitly programmed to do so.</p>
+<p class="attribution">—From <a class="reference external" href="https://en.wikipedia.org/wiki/Machine_learning">Wikipedia</a></p>
+</div></blockquote>
+<p>We will recreate the famous <a class="reference external" href="https://gym.openai.com/envs/CartPole-v0/">Cartpole Environment</a>,
+which is a very simple environment that is straight forward to implement and yet will enable us
+to focus on how to setup a project for machine learning, then we will train a neural network to play our game.</p>
+<p>The notions seen in this project are applicable to any games made using UnrealEngine.</p>
+<p>This project does not aim to introduce you to UE4 nor to teach your machine learning;
+some knownledge of both is expected.</p>
+<section id="why-unrealengine">
+<h2>Why UnrealEngine<a class="headerlink" href="#why-unrealengine" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>UnrealEngine is essentially open-source.
+The source is proprietary and technically private but you can get access by simply creating an Epic Account.</p></li>
+<li><p>The licencing is perfect for academia (See Creators LICENSE)</p></li>
+<li><p>All UnrealEngine technologies available to develop new cutting edge environments</p></li>
+<li><p>Easy to port research into the real world</p></li>
+<li><p>Easy to develop and redistribute environments</p></li>
+</ul>
+</section>
+<section id="cartpole">
+<h2>Cartpole<a class="headerlink" href="#cartpole" title="Permalink to this headline"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ue4ml.html">UE4ML</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ue4ml.html#in-a-nutshell">In a nutshell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ue4ml.html#ue4ml-architecture">UE4ML Architecture</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="game.html">Make the cartpole game</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="game.html#gamemode-cartpole">GameMode_CartPole</a></li>
+<li class="toctree-l2"><a class="reference internal" href="game.html#pawn-cart">Pawn_Cart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="game.html#pawn-pole">Pawn_Pole</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="launching.html">Cartpole as a gym environment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="launching.html#python">Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="launching.html#create-a-new-environment">Create a new environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="launching.html#run-the-environment">Run the environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="launching.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="training.html">Training</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="training.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="packaging.html">Packaging</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="packaging.html#references">References</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline"></a></h2>
+<dl class="footnote brackets">
+<dt class="label" id="id1"><span class="brackets">1</span></dt>
+<dd><p><a class="reference external" href="https://gym.openai.com/envs/CartPole-v0/">Cartpole Environment</a></p>
+</dd>
+<dt class="label" id="id2"><span class="brackets">2</span></dt>
+<dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Machine_learning">Machine Learning</a></p>
+</dd>
+<dt class="label" id="id3"><span class="brackets">3</span></dt>
+<dd><p><a class="reference external" href="https://docs.unrealengine.com/4.27/en-US/API/Plugins/UE4ML/">UE4ML Documentation</a></p>
+</dd>
+<dt class="label" id="id4"><span class="brackets">4</span></dt>
+<dd><p><a class="reference external" href="https://gym.openai.com/">OpenAI Gym</a></p>
+</dd>
+<dt class="label" id="id5"><span class="brackets">5</span></dt>
+<dd><p><a class="reference external" href="https://pytorch.org/">PyTorch Documentation</a></p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="GKML" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="install.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright BSD 3-Clause License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

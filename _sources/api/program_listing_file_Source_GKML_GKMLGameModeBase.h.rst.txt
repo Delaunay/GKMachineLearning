@@ -1,0 +1,48 @@
+
+.. _program_listing_file_Source_GKML_GKMLGameModeBase.h:
+
+Program Listing for File GKMLGameModeBase.h
+===========================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file_Source_GKML_GKMLGameModeBase.h>` (``Source/GKML/GKMLGameModeBase.h``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   // BSD 3-Clause License Copyright (c) 2022, Pierre Delaunay All rights reserved.
+   
+   #pragma once
+   
+   // Unreal Engine
+   #include "CoreMinimal.h"
+   #include "GameFramework/GameModeBase.h"
+   
+   // Generated
+   #include "GKMLGameModeBase.generated.h"
+   
+   UCLASS(Blueprintable, BlueprintType)
+   class GKML_API AGKMLGameModeBase : public AGameModeBase
+   {
+       GENERATED_BODY()
+   
+   public:
+       AGKMLGameModeBase();
+   
+       virtual void ResetLevel() override;
+   
+       virtual bool HasMatchEnded() const override;
+   
+       UFUNCTION(BlueprintCallable, Category = Game)
+       virtual void GameOver();
+   
+   protected:
+       UFUNCTION(BlueprintImplementableEvent, Category = Game, meta = (DisplayName = "ResetLevel", ScriptName = "ResetLevel"))
+       void K2_ResetLevel();
+   
+       UFUNCTION(BlueprintImplementableEvent, Category = Game, meta = (DisplayName = "OnGameOver", ScriptName = "OnGameOver"))
+       void K2_OnGameOver();
+   
+       UPROPERTY(BlueprintReadOnly, Category = Game)
+       uint32 bGameOver : 1;
+   };

@@ -1,0 +1,50 @@
+
+.. _file_Source_GKML_GKMLPlayerState.h:
+
+File GKMLPlayerState.h
+======================
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``Source/GKML/GKMLPlayerState.h``)
+----------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_Source_GKML_GKMLPlayerState.h.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``CoreMinimal.h``
+
+- ``GKMLPlayerState.generated.h``
+
+- ``GameFramework/PlayerState.h``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_Source_GKML_GKMLPlayerState.cpp`
+
+
+
+
+Classes
+-------
+
+
+- :ref:`exhale_class_classAGKMLPlayerState`
+
