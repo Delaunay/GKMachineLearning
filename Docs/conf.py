@@ -33,7 +33,7 @@ def configure_doxyfile():
     filedata = (filedata
         .replace('@DOXYGEN_OUTPUT_DIR@', doxygen_out)
         .replace('@CMAKE_SOURCE_DIR@', project_root)
-        .replace('@PROJECT_NAME@', 'Cartpole')
+        .replace('@PROJECT_NAME@', 'GKML')
         .replace('@rev_branch@', 'Unknown')
     )
 
@@ -70,13 +70,13 @@ extensions = [
 ]
 
 # Breathe Configuration
-breathe_default_project = "Cartpole"
+breathe_default_project = "GKML"
 breathe_default_members = ('members', 'undoc-members', 'protected-members', 'private-member')
 breathe_show_define_initializer = True
 breathe_show_enumvalue_initializer = True
 breathe_build_directory = doxygen_out
 breathe_projects = {
-    'Cartpole': doxygen_out_xml
+    'GKML': doxygen_out_xml
 }
 breathe_domain_by_extension = {
     'usf' : 'cpp',
@@ -84,7 +84,7 @@ breathe_domain_by_extension = {
 exhale_args = {
     # These arguments are required
     "containmentFolder":     "./api",
-    "rootFileName":          "cartpole.rst",
+    "rootFileName":          "GKML.rst",
     "rootFileTitle":         "C++ Doc",
     "doxygenStripFromPath":  "..",
     # Suggested optional arguments
@@ -120,7 +120,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Cartpole'
+project = u'GKML'
 copyright = u'BSD 3-Clause License'
 author = u'Pierre Delaunay'
 
@@ -278,5 +278,5 @@ html_css_files = [
 #html_search_scorer = 'scorer.js'
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'CartpoleDoc'
+htmlhelp_basename = 'GKMLDoc'
 
