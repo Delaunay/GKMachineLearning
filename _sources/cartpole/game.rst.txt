@@ -1,5 +1,5 @@
-Make the cartpole game
-~~~~~~~~~~~~~~~~~~~~~~
+Make the game
+~~~~~~~~~~~~~
 
 .. image:: /_static/cartpole_overview.png
    :width: 100%
