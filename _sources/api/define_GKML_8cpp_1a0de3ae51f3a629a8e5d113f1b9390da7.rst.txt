@@ -11,4 +11,4 @@ Define Documentation
 
 
 .. doxygendefine:: LOCTEXT_NAMESPACE
-   :project: Cartpole
+   :project: GKML

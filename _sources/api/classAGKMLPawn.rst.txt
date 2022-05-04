@@ -21,7 +21,7 @@ Class Documentation
 
 
 .. doxygenclass:: AGKMLPawn
-   :project: Cartpole
+   :project: GKML
    :members:
    :protected-members:
    :undoc-members:

@@ -20,7 +20,7 @@ Class Documentation
 
 
 .. doxygenclass:: AGKMLGameModeBase
-   :project: Cartpole
+   :project: GKML
    :members:
    :protected-members:
    :undoc-members:

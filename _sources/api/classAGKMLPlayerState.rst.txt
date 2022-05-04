@@ -20,7 +20,7 @@ Class Documentation
 
 
 .. doxygenclass:: AGKMLPlayerState
-   :project: Cartpole
+   :project: GKML
    :members:
    :protected-members:
    :undoc-members:
