@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Installation &mdash; Cartpole 0 documentation</title>
+  <title>Training &mdash; Cartpole 0 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
@@ -22,8 +22,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="MLAdapter" href="mladapter.html" />
-    <link rel="prev" title="Getting started" href="index.html" /> 
+    <link rel="next" title="Packaging" href="packaging.html" />
+    <link rel="prev" title="Cartpole as a gym environment" href="launching.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -44,21 +44,21 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Getting started</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="index.html#why-unrealengine">Why UnrealEngine</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html#cartpole">Cartpole</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Installation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mladapter.html">MLAdapter</a></li>
-<li class="toctree-l3"><a class="reference internal" href="game.html">Make the cartpole game</a></li>
-<li class="toctree-l3"><a class="reference internal" href="launching.html">Cartpole as a gym environment</a></li>
-<li class="toctree-l3"><a class="reference internal" href="training.html">Training</a></li>
-<li class="toctree-l3"><a class="reference internal" href="packaging.html">Packaging</a></li>
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mladapter.html">MLAdapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="game.html">Make the cartpole game</a></li>
+<li class="toctree-l1"><a class="reference internal" href="launching.html">Cartpole as a gym environment</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Training</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#references">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packaging.html">Packaging</a></li>
 </ul>
-</li>
+<p class="caption" role="heading"><span class="caption-text">Developer</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../issues.html">Known Issues</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/cartpole.html">C++ Doc</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python/index.html">Python Doc</a></li>
@@ -78,10 +78,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">Getting started</a> &raquo;</li>
-      <li>Installation</li>
+      <li>Training</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/src/install.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/cartpole/training.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -89,28 +88,48 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="installation">
-<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h1>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This tutorial use UnrealEngine 5.0, newer version should work as well</p>
+  <section id="training">
+<h1>Training<a class="headerlink" href="#training" title="Permalink to this headline"></a></h1>
+<p>In the previous section we were able to launch our environment,
+for simplicity we did a random action at each step.
+Now it is time to train a neural net work that will learn to perform
+the right action given the state of the game.</p>
+<a class="reference internal image-reference" href="../_images/training.png"><img alt="../_images/training.png" src="../_images/training.png" style="width: 100%;" /></a>
+<p>One problem of reinforcement learning is efficiency.
+On a typical machine learning task the training pipeline can load huge
+batch of training data.</p>
+<p>Reinforcement learning on the other hand generate the training data on the fly.
+This means the batch size is limited to 1 which tanks the training efficiency.</p>
+<p>To improve efficiency, the simulation is ran using an offline network (i.e no training),
+observations, actions and rewards are saved in a replay buffer that can be sampled later to optimize the network.
+The optimization is ran when the replay buffer is full and the weights of the networks gets updated.</p>
+<p>To avoid stopping the simulation during the optimization step can be run asynchronously as well.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Making things run asynchronously can hinder reproducibility of the training.</p>
 </div>
-<ol class="arabic simple">
-<li><p>Install UnrealEngine</p></li>
-<li><p>Create a new blank C++ project</p>
-<ul class="simple">
-<li><p>Enable MLAdapter plugin (Setting &gt; Plugins &gt; UE4 support for ML)</p></li>
-</ul>
-</li>
-</ol>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline"></a></h2>
+<dl class="footnote brackets">
+<dt class="label" id="id1"><span class="brackets">1</span></dt>
+<dd><p><a class="reference external" href="https://pytorch.org/tutorials/intermediate/reinforcement_q_learning.html">DQN Learning</a></p>
+</dd>
+<dt class="label" id="id2"><span class="brackets">2</span></dt>
+<dd><p><a class="reference external" href="https://github.com/ikostrikov/pytorch-a2c-ppo-acktr-gail">A2C</a></p>
+</dd>
+<dt class="label" id="id3"><span class="brackets">3</span></dt>
+<dd><p><a class="reference external" href="https://github.com/ikostrikov/pytorch-a2c-ppo-acktr-gail">PPO</a></p>
+</dd>
+</dl>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="index.html" class="btn btn-neutral float-left" title="Getting started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="mladapter.html" class="btn btn-neutral float-right" title="MLAdapter" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="launching.html" class="btn btn-neutral float-left" title="Cartpole as a gym environment" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="packaging.html" class="btn btn-neutral float-right" title="Packaging" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

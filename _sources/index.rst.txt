@@ -2,9 +2,21 @@
 .. include:: ../README.rst
 
 .. toctree::
-   :maxdepth: 2
+   :caption: Getting Started
+   :maxdepth: 1
 
-   src/index
+   cartpole/introduction
+   cartpole/install
+   cartpole/mladapter
+   cartpole/game
+   cartpole/launching
+   cartpole/training
+   cartpole/packaging
+
+.. toctree::
+   :caption: Developer
+   :maxdepth: 1
+
    issues
    api/cartpole
    python/index

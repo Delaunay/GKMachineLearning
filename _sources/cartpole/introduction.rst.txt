@@ -1,5 +1,5 @@
-Getting started
-===============
+Introduction
+============
 
 This project demonstrates how to use MLAdapter to create a reinforcement learning
 environment for machine learning.
@@ -29,19 +29,6 @@ Why UnrealEngine
 * All UnrealEngine technologies available to develop new cutting edge environments
 * Easy to port research into the real world
 * Easy to develop and redistribute environments
-
-Cartpole
-~~~~~~~~
-
-.. toctree::
-   :maxdepth: 2
-
-   install
-   mladapter
-   game
-   launching
-   training
-   packaging
 
 
 References
