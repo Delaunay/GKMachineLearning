@@ -28,8 +28,8 @@ This can be used to train neural networks to play games.
    :width: 100%
 
 
-MLAdapter Architecture
-^^^^^^^^^^^^^^^^^^^^^^
+Architecture
+^^^^^^^^^^^^
 
 A more detailed overview of MLAdapter
 

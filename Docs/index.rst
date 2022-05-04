@@ -5,13 +5,13 @@
    :caption: Making of Cartpole
    :maxdepth: 1
 
-   cartpole/Introduction
-   cartpole/Setup
-   cartpole/MLAdapter
-   cartpole/Game
-   cartpole/Launching
-   cartpole/Training
-   cartpole/Packaging
+   cartpole/1_Introduction
+   cartpole/2_Setup
+   cartpole/3_MLAdapter
+   cartpole/4_Game
+   cartpole/5_Launching
+   cartpole/6_Training
+   cartpole/7_Packaging
 
 .. toctree::
    :caption: Developer
