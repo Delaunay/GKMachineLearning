@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MLAdapter &mdash; GKML 0 documentation</title>
+  <title>Training &mdash; GKML 0 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
@@ -44,7 +44,11 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Making of Cartpole</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="Setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_Setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_MLAdapter.html">MLAdapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_Game.html">Make the game</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_Launching.html">Cartpole as a gym environment</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Developer</span></p>
 <ul>
@@ -66,9 +70,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>MLAdapter</li>
+      <li>Training</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/cartpole/mladapter.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/cartpole/7_Training.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -76,32 +80,39 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="mladapter">
-<h1>MLAdapter<a class="headerlink" href="#mladapter" title="Permalink to this headline"></a></h1>
-<p>MLAdapter was made to be as unintrusive as possible, this means that
-you will need to modify very little of your game (if anything) to turn it into
-a reinforcement learning environment.</p>
-<p>The main requirements that would need to be addressed are:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Reward</span></code>: a value that quantify how well your agent/neural network is doing (i.e a score)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ResetLevel</span></code>: the ability to restart a level when the agent dies</p></li>
-</ul>
-<p>Because of it unintrusive design, ML-researchers will spend their time on the python side
-focusing on the machine learning side while developers can focus on the environment itself.
-While the cartpole environment is using a bit of C++ most of it was written to expose functionallity to
-blueprint, as such very little C++ knownledge is necessary to build a custom environment.</p>
-<section id="in-a-nutshell">
-<h2>In a nutshell<a class="headerlink" href="#in-a-nutshell" title="Permalink to this headline"></a></h2>
-<p>MLAdapter is essentially a RPC server that is started along side your game
-and is able to receive actions/inputs from a remote client and reply with
-information about the game.</p>
-<p>This can be used to train neural networks to play games.</p>
-<a class="reference internal image-reference" href="../_images/cartpole_setup.png"><img alt="../_images/cartpole_setup.png" src="../_images/cartpole_setup.png" style="width: 100%;" /></a>
-</section>
-<section id="mladapter-architecture">
-<h2>MLAdapter Architecture<a class="headerlink" href="#mladapter-architecture" title="Permalink to this headline"></a></h2>
-<p>A more detailed overview of MLAdapter</p>
-<a class="reference internal image-reference" href="../_images/UE4ML_System.png"><img alt="../_images/UE4ML_System.png" src="../_images/UE4ML_System.png" style="width: 100%;" /></a>
+  <section id="training">
+<h1>Training<a class="headerlink" href="#training" title="Permalink to this headline"></a></h1>
+<p>In the previous section we were able to launch our environment,
+for simplicity we did a random action at each step.
+Now it is time to train a neural net work that will learn to perform
+the right action given the state of the game.</p>
+<a class="reference internal image-reference" href="../_images/training.png"><img alt="../_images/training.png" src="../_images/training.png" style="width: 100%;" /></a>
+<p>One problem of reinforcement learning is efficiency.
+On a typical machine learning task the training pipeline can load huge
+batch of training data.</p>
+<p>Reinforcement learning on the other hand generate the training data on the fly.
+This means the batch size is limited to 1 which tanks the training efficiency.</p>
+<p>To improve efficiency, the simulation is ran using an offline network (i.e no training),
+observations, actions and rewards are saved in a replay buffer that can be sampled later to optimize the network.
+The optimization is ran when the replay buffer is full and the weights of the networks gets updated.</p>
+<p>To avoid stopping the simulation during the optimization step can be run asynchronously as well.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Making things run asynchronously can hinder reproducibility of the training.</p>
+</div>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline"></a></h2>
+<dl class="footnote brackets">
+<dt class="label" id="id1"><span class="brackets">1</span></dt>
+<dd><p><a class="reference external" href="https://pytorch.org/tutorials/intermediate/reinforcement_q_learning.html">DQN Learning</a></p>
+</dd>
+<dt class="label" id="id2"><span class="brackets">2</span></dt>
+<dd><p><a class="reference external" href="https://github.com/ikostrikov/pytorch-a2c-ppo-acktr-gail">A2C</a></p>
+</dd>
+<dt class="label" id="id3"><span class="brackets">3</span></dt>
+<dd><p><a class="reference external" href="https://github.com/ikostrikov/pytorch-a2c-ppo-acktr-gail">PPO</a></p>
+</dd>
+</dl>
 </section>
 </section>
 

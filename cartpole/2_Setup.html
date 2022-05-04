@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Introduction &mdash; GKML 0 documentation</title>
+  <title>Setup &mdash; GKML 0 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
@@ -21,7 +21,9 @@
         <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="MLAdapter" href="3_MLAdapter.html" />
+    <link rel="prev" title="Introduction" href="1_Introduction.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -43,8 +45,12 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Making of Cartpole</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="Setup.html">Setup</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="1_Introduction.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_MLAdapter.html">MLAdapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_Game.html">Make the game</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_Launching.html">Cartpole as a gym environment</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Developer</span></p>
 <ul>
@@ -66,9 +72,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Introduction</li>
+      <li>Setup</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/cartpole/introduction.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/cartpole/2_Setup.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -76,59 +82,29 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline"></a></h1>
-<p>This project demonstrates how to use MLAdapter to create a reinforcement learning
-environment for machine learning.</p>
-<blockquote>
-<div><p>Machine learning (ML) is the study of computer algorithms that can improve automatically through experience and by the use of data.
-It is seen as a part of artificial intelligence. Machine learning algorithms build a model based on sample data,
-known as training data, in order to make predictions or decisions without being explicitly programmed to do so.</p>
-<p class="attribution">—From <a class="reference external" href="https://en.wikipedia.org/wiki/Machine_learning">Wikipedia</a></p>
-</div></blockquote>
-<p>We will recreate the famous <a class="reference external" href="https://gym.openai.com/envs/CartPole-v0/">Cartpole Environment</a>,
-which is a very simple environment that is straight forward to implement and yet will enable us
-to focus on how to setup a project for machine learning, then we will train a neural network to play our game.</p>
-<p>The notions seen in this project are applicable to any games made using UnrealEngine.</p>
-<p>This project does not aim to introduce you to UE4 nor to teach your machine learning;
-some knownledge of both is expected.</p>
-<section id="why-unrealengine">
-<h2>Why UnrealEngine<a class="headerlink" href="#why-unrealengine" title="Permalink to this headline"></a></h2>
+  <section id="setup">
+<h1>Setup<a class="headerlink" href="#setup" title="Permalink to this headline"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This tutorial use UnrealEngine 5.0, newer version should work as well</p>
+</div>
+<ol class="arabic simple">
+<li><p>Install UnrealEngine</p></li>
+<li><p>Create a new blank C++ project</p>
 <ul class="simple">
-<li><p>UnrealEngine is essentially open-source.
-The source is proprietary and technically private but you can get access by simply creating an Epic Account.</p></li>
-<li><p>The licencing is perfect for academia (See Creators LICENSE)</p></li>
-<li><p>All UnrealEngine technologies available to develop new cutting edge environments</p></li>
-<li><p>Easy to port research into the real world</p></li>
-<li><p>Easy to develop and redistribute environments</p></li>
+<li><p>Enable MLAdapter plugin (Setting &gt; Plugins &gt; UE4 support for ML)</p></li>
 </ul>
-</section>
-<section id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this headline"></a></h2>
-<dl class="footnote brackets">
-<dt class="label" id="id1"><span class="brackets">1</span></dt>
-<dd><p><a class="reference external" href="https://gym.openai.com/envs/CartPole-v0/">Cartpole Environment</a></p>
-</dd>
-<dt class="label" id="id2"><span class="brackets">2</span></dt>
-<dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Machine_learning">Machine Learning</a></p>
-</dd>
-<dt class="label" id="id3"><span class="brackets">3</span></dt>
-<dd><p><a class="reference external" href="https://docs.unrealengine.com/5.0/en-US/API/Plugins/MLAdapter/">MLAdapter Documentation</a></p>
-</dd>
-<dt class="label" id="id4"><span class="brackets">4</span></dt>
-<dd><p><a class="reference external" href="https://gym.openai.com/">OpenAI Gym</a></p>
-</dd>
-<dt class="label" id="id5"><span class="brackets">5</span></dt>
-<dd><p><a class="reference external" href="https://pytorch.org/">PyTorch Documentation</a></p>
-</dd>
-</dl>
-</section>
+</li>
+</ol>
 </section>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="1_Introduction.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="3_MLAdapter.html" class="btn btn-neutral float-right" title="MLAdapter" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 
