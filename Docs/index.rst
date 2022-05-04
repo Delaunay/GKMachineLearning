@@ -2,16 +2,16 @@
 .. include:: ../README.rst
 
 .. toctree::
-   :caption: Getting Started
+   :caption: Making of Cartpole
    :maxdepth: 1
 
-   cartpole/introduction
-   cartpole/install
-   cartpole/mladapter
-   cartpole/game
-   cartpole/launching
-   cartpole/training
-   cartpole/packaging
+   cartpole/Introduction
+   cartpole/Setup
+   cartpole/MLAdapter
+   cartpole/Game
+   cartpole/Launching
+   cartpole/Training
+   cartpole/Packaging
 
 .. toctree::
    :caption: Developer

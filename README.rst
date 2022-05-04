@@ -5,7 +5,9 @@ GKML
    :target: https://delaunay.github.io/GKMachineLearning/
    :alt: Documentation Status
 
-UE5 plugin providing tools for machine learning
+UE5 plugin providing tools for machine learning.
+This plugin documents how to use the MLAdapter plugin for machine learning
+by reimplementing the Cartpole environment.
 
 .. image:: /_static/Cartpole_big.png
 
