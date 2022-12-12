@@ -9,7 +9,7 @@ UE5 plugin providing tools for machine learning.
 This plugin documents how to use the MLAdapter plugin for machine learning
 by reimplementing the Cartpole environment.
 
-.. image:: /_static/Cartpole_big.png
+.. image:: /Docs/_static/Cartpole_big.png
 
 
 Requirements
